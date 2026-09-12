@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("ADMIN")
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id               String                      @id @default(cuid())
+  title            String
+  slug             String                      @unique
+  location         String
+  category         String
+  year             String
+  shortDescription String
+  fullDescription  String
+  designConcept    String?
+  challenges       String?
+  solution         String?
+  status           String                      @default("PUBLISHED")
+  isFeatured       Boolean                     @default(false)
+  coverImage       String
+  gallery          String?
+  floorPlans       String?
+  elevations       String?
+  interiorImages   String?
+  exteriorImages   String?
+  renders3D        String?
+  beforeAfter      String?
+  specifications   String?
+  client           String?
+  projectSize      String?
+  seoTitle         String?
+  seoDescription   String?
+  altText          String?
+  order            Int                         @default(0)
+  createdAt        DateTime                    @default(now())
+  updatedAt        DateTime                    @updatedAt
+  categories       ProjectCategoryAssignment[]
+}
+
+model Category {
+  id        String                      @id @default(cuid())
+  name      String                      @unique
+  slug      String                      @unique
+  order     Int                         @default(0)
+  createdAt DateTime                    @default(now())
+  projects  ProjectCategoryAssignment[]
+}
+
+model ProjectCategoryAssignment {
+  id         String   @id @default(cuid())
+  projectId  String
+  categoryId String
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, categoryId])
+}
+
+model Service {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  tagline          String?
+  shortDescription String
+  fullDescription  String
+  coverImage       String?
+  icon             String?
+  features         String?
+  order            Int      @default(0)
+  isPublished      Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Enquiry {
+  id           String   @id @default(cuid())
+  name         String
+  phone        String
+  email        String?
+  projectType  String
+  location     String?
+  approxBudget String?
+  projectSize  String?
+  message      String
+  status       String   @default("NEW")
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model BlogPost {
+  id             String   @id @default(cuid())
+  title          String
+  slug           String   @unique
+  coverImage     String
+  summary        String
+  content        String
+  author         String   @default("Ar. Shailendra Bhadoria")
+  tags           String?
+  category       String   @default("Architecture")
+  isPublished    Boolean  @default(true)
+  publishedAt    DateTime @default(now())
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  filename  String
+  filepath  String
+  url       String
+  mimeType  String
+  fileSize  Int
+  width     Int?
+  height    Int?
+  altText   String?
+  caption   String?
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id                 String   @id @default("default")
+  studioName         String   @default("Urban Plus Architects & Associates")
+  principalArchitect String   @default("Ar. Shailendra Bhadoria")
+  establishedYear    String   @default("2012")
+  tagline            String   @default("Designing Spaces. Shaping Experiences.")
+  subheading         String   @default("Architecture, interiors and visualization crafted with precision, creativity and a distinctly modern vision.")
+  heroImage          String   @default("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85")
+  address            String   @default("A-81, Aditya Puram, Opposite/Near DD Nagar, Deen Dayal Nagar, Gwalior, Madhya Pradesh – 474005")
+  email              String   @default("urban.plusgwl@gmail.com")
+  phone              String   @default("+91 751 245 0000")
+  whatsappNumber     String   @default("919826200000")
+  whatsappMessage    String   @default("Hello Urban Plus Architects, I would like to discuss a new architecture/design project.")
+  serviceAreas       String   @default("Gwalior, Bhind, Dabra, Indore, Jhansi, Shivpuri")
+  googleMapsUrl      String   @default("https://maps.google.com/?q=A-81+Aditya+Puram+Deen+Dayal+Nagar+Gwalior")
+  googleMapsEmbedUrl String   @default("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14316.326260814983!2d78.205282!3d26.237248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c6bbd8bca61f%3A0x6b07da29b2ffbf00!2sDeen%20Dayal%20Nagar%2C%20Gwalior%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin")
+  facebookUrl        String?
+  instagramUrl       String?
+  linkedinUrl        String?
+  youtubeUrl         String?
+  footerText         String   @default("Urban Plus Architects & Associates is a Gwalior-based architecture and design studio established in 2012, delivering thoughtful architecture, modern interiors, and precision planning across Central India.")
+  updatedAt          DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String?
+  details   String?
+  createdAt DateTime @default(now())
+}
