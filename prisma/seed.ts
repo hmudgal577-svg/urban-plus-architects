@@ -27,8 +27,7 @@ async function main() {
   await prisma.siteSettings.upsert({
     where: { id: 'default' },
     update: {
-      heroImage:
-        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85',
+      heroImage: '/images/hero-daylight.jpg',
     },
     create: {
       id: 'default',
@@ -38,8 +37,7 @@ async function main() {
       tagline: 'Designing Spaces. Shaping Experiences.',
       subheading:
         'Architecture, interiors and visualization crafted with precision, creativity and a distinctly modern vision.',
-      heroImage:
-        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85',
+      heroImage: '/images/hero-daylight.jpg',
       address:
         'A-81, Aditya Puram, Opposite/Near DD Nagar, Deen Dayal Nagar, Gwalior, Madhya Pradesh – 474005',
       email: 'urban.plusgwl@gmail.com',
