@@ -26,7 +26,10 @@ async function main() {
   // 2. Site Settings
   await prisma.siteSettings.upsert({
     where: { id: 'default' },
-    update: {},
+    update: {
+      heroImage:
+        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85',
+    },
     create: {
       id: 'default',
       studioName: 'Urban Plus Architects & Associates',
@@ -36,7 +39,7 @@ async function main() {
       subheading:
         'Architecture, interiors and visualization crafted with precision, creativity and a distinctly modern vision.',
       heroImage:
-        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85',
+        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85',
       address:
         'A-81, Aditya Puram, Opposite/Near DD Nagar, Deen Dayal Nagar, Gwalior, Madhya Pradesh – 474005',
       email: 'urban.plusgwl@gmail.com',

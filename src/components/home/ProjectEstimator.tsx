@@ -217,64 +217,64 @@ I would like to schedule an architectural consultation to discuss this project.`
 
           {/* Right Column: Dynamic Deliverables & Live Brief Summary */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-8 bg-neutral-950 text-white border border-neutral-800 shadow-xl space-y-8">
-              <div className="space-y-1 pb-4 border-b border-white/10">
-                <span className="text-[10px] font-mono tracking-ultra uppercase text-accent-light block font-medium">
+            <div className="p-6 sm:p-8 bg-white text-neutral-900 border border-neutral-300 shadow-lg space-y-8">
+              <div className="space-y-1 pb-4 border-b border-neutral-200">
+                <span className="text-[10px] font-mono tracking-ultra uppercase text-accent block font-semibold">
                   Preliminary Architectural Charter
                 </span>
-                <h3 className="text-2xl font-heading font-light">
+                <h3 className="text-2xl font-heading font-light text-neutral-950">
                   {selectedTypo.name}
                 </h3>
-                <p className="text-xs text-neutral-400 font-mono">
+                <p className="text-xs text-neutral-500 font-mono">
                   {formattedArea} SQ. FT. &bull; {location}
                 </p>
               </div>
 
               {/* Metric Highlights */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-white/5 border border-white/10 space-y-1">
-                  <div className="flex items-center space-x-1.5 text-neutral-400 text-xs font-mono">
-                    <FileText className="w-3.5 h-3.5 text-accent-light" />
+                <div className="p-4 bg-[#f7f6f2] border border-neutral-200 space-y-1">
+                  <div className="flex items-center space-x-1.5 text-neutral-600 text-xs font-mono">
+                    <FileText className="w-3.5 h-3.5 text-accent" />
                     <span>Working Drawings</span>
                   </div>
-                  <div className="text-2xl font-heading font-medium text-white">
+                  <div className="text-2xl font-heading font-medium text-neutral-950">
                     ~{estimatedDrawings}+
                   </div>
-                  <div className="text-[10px] text-neutral-400">Architectural & MEP sheets</div>
+                  <div className="text-[10px] text-neutral-500">Architectural & MEP sheets</div>
                 </div>
 
-                <div className="p-4 bg-white/5 border border-white/10 space-y-1">
-                  <div className="flex items-center space-x-1.5 text-neutral-400 text-xs font-mono">
-                    <Clock className="w-3.5 h-3.5 text-accent-light" />
+                <div className="p-4 bg-[#f7f6f2] border border-neutral-200 space-y-1">
+                  <div className="flex items-center space-x-1.5 text-neutral-600 text-xs font-mono">
+                    <Clock className="w-3.5 h-3.5 text-accent" />
                     <span>Design Phase</span>
                   </div>
-                  <div className="text-2xl font-heading font-medium text-white">
+                  <div className="text-2xl font-heading font-medium text-neutral-950">
                     {estimatedWeeks} Weeks
                   </div>
-                  <div className="text-[10px] text-neutral-400">Concept to working drawings</div>
+                  <div className="text-[10px] text-neutral-500">Concept to working drawings</div>
                 </div>
               </div>
 
               {/* Included Architectural Package */}
               <div className="space-y-3">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-accent-light font-semibold block">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-accent font-semibold block">
                   Key Deliverables Included:
                 </span>
-                <ul className="space-y-2 text-xs text-neutral-300 font-light">
+                <ul className="space-y-2 text-xs text-neutral-700 font-normal">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent-light mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
                     <span>Site solar orientation & passive cross-ventilation analysis</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent-light mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
                     <span>Detailed structural framing & Gwalior Municipal sanction coordination</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent-light mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
                     <span>{estimated3DRenders}+ Photorealistic 3D exterior & interior CGI views</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent-light mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
                     <span>Comprehensive bill of quantities (BOQ) & material specifications</span>
                   </li>
                 </ul>
@@ -292,7 +292,7 @@ I would like to schedule an architectural consultation to discuss this project.`
                   <span>Send Estimate on WhatsApp</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
-                <p className="text-[10px] font-mono text-neutral-400 text-center uppercase tracking-wider mt-3">
+                <p className="text-[10px] font-mono text-neutral-500 text-center uppercase tracking-wider mt-3 font-medium">
                   Transmits this exact brief directly to Ar. Shailendra Bhadoria.
                 </p>
               </div>

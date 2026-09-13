@@ -64,23 +64,17 @@ export default function Header({ settings }: HeaderProps) {
 
   const whatsappLink = getWhatsAppUrl(settings?.whatsappNumber, settings?.whatsappMessage);
 
-  // Determine header appearance based on scroll and page
-  const headerBgClass = isHome && !scrolled
-    ? 'py-6 bg-gradient-to-b from-black/80 via-black/40 to-transparent text-white'
-    : 'py-3.5 bg-[#fbfbf9]/92 backdrop-blur-md border-b border-neutral-200/90 text-neutral-900 shadow-sm';
+  // Header appearance is always light architectural luxury
+  const headerBgClass = scrolled
+    ? 'py-3.5 bg-[#fbfbf9]/95 backdrop-blur-md border-b border-neutral-200/90 text-neutral-900 shadow-sm'
+    : 'py-5 bg-[#fbfbf9]/90 backdrop-blur-md border-b border-neutral-200/60 text-neutral-900';
 
-  const logoTitleClass = isHome && !scrolled
-    ? 'text-white group-hover:text-accent'
-    : 'text-neutral-900 group-hover:text-accent';
-
-  const logoSubClass = isHome && !scrolled
-    ? 'text-white/70'
-    : 'text-neutral-500';
+  const logoTitleClass = 'text-neutral-950 group-hover:text-accent';
+  const logoSubClass = 'text-neutral-500';
 
   const linkTextClass = (isActive: boolean) => {
     if (isActive) return 'text-accent font-semibold';
-    if (isHome && !scrolled) return 'text-white/80 hover:text-white';
-    return 'text-neutral-600 hover:text-neutral-950';
+    return 'text-neutral-700 hover:text-neutral-950 font-medium';
   };
 
   return (
@@ -124,11 +118,7 @@ export default function Header({ settings }: HeaderProps) {
             <button
               type="button"
               onClick={() => setCommandPaletteOpen(true)}
-              className={`px-3 py-2 transition-colors duration-200 focus:outline-none flex items-center space-x-2 text-xs font-mono uppercase ${
-                isHome && !scrolled
-                  ? 'text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20'
-                  : 'text-neutral-700 hover:text-neutral-950 bg-white hover:bg-neutral-50 border border-neutral-300'
-              }`}
+              className="px-3 py-2 transition-colors duration-200 focus:outline-none flex items-center space-x-2 text-xs font-mono uppercase text-neutral-700 hover:text-neutral-950 bg-white hover:bg-neutral-100 border border-neutral-300/80 shadow-2xs"
               aria-label="Search studio or quick jump"
               title="Quick Search (Ctrl+K)"
             >
@@ -151,7 +141,7 @@ export default function Header({ settings }: HeaderProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 focus:outline-none ${isHome && !scrolled ? 'text-white' : 'text-neutral-900'}`}
+              className="lg:hidden p-2 focus:outline-none text-neutral-900 hover:text-accent transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
