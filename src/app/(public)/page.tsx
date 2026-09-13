@@ -3,9 +3,12 @@ import Hero from '@/components/home/Hero';
 import StudioIntro from '@/components/home/StudioIntro';
 import AnimatedStats from '@/components/home/AnimatedStats';
 import FeaturedWorks from '@/components/home/FeaturedWorks';
+import BeforeAfterSlider from '@/components/home/BeforeAfterSlider';
 import Philosophy from '@/components/home/Philosophy';
+import MaterialityShowcase from '@/components/home/MaterialityShowcase';
 import ServicesGrid from '@/components/home/ServicesGrid';
 import ProcessTimeline from '@/components/home/ProcessTimeline';
+import ProjectEstimator from '@/components/home/ProjectEstimator';
 import ServiceAreas from '@/components/home/ServiceAreas';
 import FinalCTA from '@/components/home/FinalCTA';
 import { prisma } from '@/lib/prisma';
@@ -59,7 +62,7 @@ export default async function HomePage() {
         whatsappMessage={settings?.whatsappMessage}
       />
 
-      {/* 2. Studio Introduction */}
+      {/* 2. Studio Introduction & Coordinates */}
       <StudioIntro />
 
       {/* 3. Stats Section */}
@@ -68,19 +71,28 @@ export default async function HomePage() {
       {/* 4. Selected Works / Featured Projects */}
       <FeaturedWorks projects={projects} />
 
-      {/* 5. Design Philosophy */}
+      {/* 5. Interactive Architectural Transformation Slider */}
+      <BeforeAfterSlider />
+
+      {/* 6. Design Philosophy */}
       <Philosophy />
 
-      {/* 6. Core Services Grid */}
+      {/* 7. Tactile Materiality & Regional Stone Showcase */}
+      <MaterialityShowcase />
+
+      {/* 8. Core Services Grid */}
       <ServicesGrid services={services} />
 
-      {/* 7. Design Process Timeline */}
+      {/* 9. Design Process Timeline */}
       <ProcessTimeline />
 
-      {/* 8. Service Areas in Central India */}
+      {/* 10. Interactive Architectural Scope & Budget Estimator */}
+      <ProjectEstimator />
+
+      {/* 11. Service Areas in Central India */}
       <ServiceAreas />
 
-      {/* 9. Final Call to Action */}
+      {/* 12. Final Call to Action */}
       <FinalCTA
         whatsappNumber={settings?.whatsappNumber}
         whatsappMessage={settings?.whatsappMessage}

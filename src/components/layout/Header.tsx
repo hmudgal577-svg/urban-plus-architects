@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Search } from 'lucide-react';
 import { getWhatsAppUrl } from '@/lib/utils';
+import CommandPalette from '@/components/layout/CommandPalette';
 
 interface HeaderProps {
   settings?: {
@@ -18,8 +19,21 @@ interface HeaderProps {
 export default function Header({ settings }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+
+  // Global Ctrl+K / Cmd+K listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,7 +119,23 @@ export default function Header({ settings }: HeaderProps) {
           </nav>
 
           {/* CTA & Mobile Toggle */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
+            {/* Quick Search Trigger */}
+            <button
+              type="button"
+              onClick={() => setCommandPaletteOpen(true)}
+              className={`px-3 py-2 transition-colors duration-200 focus:outline-none flex items-center space-x-2 text-xs font-mono uppercase ${
+                isHome && !scrolled
+                  ? 'text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20'
+                  : 'text-neutral-700 hover:text-neutral-950 bg-white hover:bg-neutral-50 border border-neutral-300'
+              }`}
+              aria-label="Search studio or quick jump"
+              title="Quick Search (Ctrl+K)"
+            >
+              <Search className="w-3.5 h-3.5 text-accent" />
+              <span className="hidden xl:inline text-[10px] text-neutral-400">Ctrl K</span>
+            </button>
+
             {/* Discuss Your Project -> Direct WhatsApp Link */}
             <a
               href={whatsappLink}
@@ -177,6 +207,11 @@ export default function Header({ settings }: HeaderProps) {
           </div>
         </div>
       </div>
+
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+      />
     </>
   );
 }

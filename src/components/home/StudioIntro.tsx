@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+import StudioStatusBadge from '@/components/layout/StudioStatusBadge';
 
 export default function StudioIntro() {
   const capabilities = [
@@ -45,9 +46,12 @@ export default function StudioIntro() {
           {/* Right: Studio Narrative & CTA */}
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-4">
-              <span className="text-xs font-mono uppercase tracking-ultra text-accent block font-medium">
-                01 / Studio Introduction
-              </span>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <span className="text-xs font-mono uppercase tracking-ultra text-accent block font-medium">
+                  01 / Studio Introduction
+                </span>
+                <StudioStatusBadge />
+              </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light tracking-tight text-neutral-900 leading-tight">
                 Architecture with <span className="italic font-normal text-accent">Purpose.</span>
               </h2>

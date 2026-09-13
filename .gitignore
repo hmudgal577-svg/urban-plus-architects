@@ -31,3 +31,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+.env*
+leads/
+seen_leads.json
+server.py
+start.bat
+requirements.txt
+assets/
+index.html
+
